@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2015 by Liu Benyuan <liubenyuan@gmail.com>
+%% Copyright (C) 2017 by Liu Benyuan <liubenyuan@gmail.com>
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3a
@@ -29,7 +29,7 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{nudtpaper}
-[2011/07/17 v2.2 NUDT paper template]
+[2017/06/15 v2.7 NUDT paper template]
 \newif\ifismaster\ismastertrue
 \DeclareOption{master}{\ismastertrue}
 \DeclareOption{doctor}{\ismasterfalse}
@@ -74,10 +74,11 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 \RequirePackage[CJKchecksingle,no-math]{xeCJK}
-\RequirePackage{CJKnumb}
+\RequirePackage{zhnumber}
 \RequirePackage{indentfirst}
 \RequirePackage[numbers,sort&compress,square]{natbib}
 \RequirePackage[colorlinks=true,linkcolor=blue,citecolor=red,pdfborder=0 1 1]{hyperref}
+\RequirePackage{datetime}
 \defaultfontfeatures{Mapping=tex-text}
 \xeCJKsetcharclass{"0}{"2E7F}{0}
 \xeCJKsetcharclass{"2E80}{"FFFF}{1}
@@ -211,9 +212,9 @@
 \renewcommand\figurename{图}
 \renewcommand\tablename{表}
 \renewcommand\appendixname{附录}
-\def\CJK@today{\CJKdigits{\the\year} 年 \CJKnumber{\the\month} 月}
-\newcommand\zhtoday{\CJK@today}
-\newcommand\entoday{\today{}}
+\def\CJK@today{\zhdigits{\the\year}年\zhnumber{\the\month}月}
+\renewcommand\zhtoday{\CJK@today}
+\newcommand\entoday{\monthname{}, \the\year}
 \geometry{top=21mm,bottom=25.5mm,left=30mm,right=30mm}
 \geometry{headheight=9mm,headsep=1mm,footskip=9mm}
 \renewcommand\setheadrule[1]{%
@@ -225,7 +226,7 @@
     \rule{\linewidth}{1.5pt}}%
   \fi}
 \renewpagestyle{plain}{
-\sethead{}{\raisebox{.65\baselineskip}{\songti \wuhao \ifisanon{~}\else{国防科学技术大学研究生院\@optionpaperclass{}学位论文}\fi}}{}%
+\sethead{}{\raisebox{.65\baselineskip}{\songti \wuhao \ifisanon{~}\else{国防科技大学研究生院\@optionpaperclass{}学位论文}\fi}}{}%
 \setfoot{}{{\songti \wuhao 第~\thepage~页}}{}%
 \headrule%
 \footrule%
@@ -264,7 +265,7 @@
   \clearpage\fi\fi%
 }
 \titlecontents{chapter}[0pt]{\vspace{0.25\baselineskip} \heiti \xiaosi[1.25]}
-    {第\CJKnumber{\thecontentslabel}章\quad}{}
+    {第\zhnumber{\thecontentslabel}章\quad}{}
     {\hspace{.5em}\titlerule*{.}\contentspage}
 \titlecontents{section}[2em]{\songti \xiaosi[1.25]}
     {\thecontentslabel\quad}{}
@@ -328,7 +329,7 @@
 \setlength{\topskip}{0pt}
 \setcounter{secnumdepth}{3}
 \setlength{\footnotesep}{2.2ex \@minus 2bp}
-\titleformat{\chapter}{\filcenter\sf \heiti\sanhao[1.25]}{第\CJKnumber{\thechapter}章\,}{1em}{}
+\titleformat{\chapter}{\filcenter\sf \heiti\sanhao[1.25]}{第\zhnumber{\thechapter}章\,}{1em}{}
 \titleformat{\section}{\filcenter\bfseries \cusong\sihao[1.25]}{\thesection}{1em}{}
 \titleformat{\subsection}{\sf \heiti\xiaosi[1.25]}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\bfseries \cusong\xiaosi[1.25]}{\thesubsubsection}{1em}{}
@@ -389,7 +390,7 @@
 \displaywidowpenalty=5000
 \let\old@tabular\@tabular
 \def\thu@tabular{\wuhao[1.25]\old@tabular}
-\DeclareCaptionLabelFormat{thu}{{\wuhao[1.25]\song #1~\rmfamily #2}}
+\DeclareCaptionLabelFormat{thu}{{\wuhao[1.25]\song#1~\rmfamily #2}}
 \DeclareCaptionLabelSeparator{thu}{\hspace{1em}}
 \DeclareCaptionFont{thu}{\wuhao[1.25]}
 \captionsetup{labelformat=thu,labelsep=thu,font=thu}
@@ -437,7 +438,6 @@
 \theoremseparator{:\,}
 \newtheorem{proof}{证明}[chapter]
 \newtheorem{assumption}{假设}[chapter]
-\newtheorem{definition}{定义}[chapter]
 
 \renewtheoremstyle{plain}%
 {\item[\hspace*{2em} \theorem@headerfont ##1\ ##2\theorem@separator]}%
@@ -446,6 +446,7 @@
 \theorembodyfont{\kai\xiaosi[1.3]}
 \theoremheaderfont{\hei\xiaosi[1.3]}
 \theoremsymbol{}
+\newtheorem{definition}{定义}[chapter]
 \newtheorem{lemma}{引理}[chapter]
 \newtheorem{theorem}{定理}[chapter]
 \newtheorem{axiom}{公理}[chapter]
@@ -478,14 +479,14 @@
 \def\enpapertype#1{\def\@enpapertype{#1}} % Engineering, Science
 \def\optionpaperclass#1{\def\@optionpaperclass{#1}} % paperclass
 \def\optionpaperclassen#1{\def\@optionpaperclassen{#1}}
-\def\optionas#1{\def\@optionas{#1}} % Advisor OR Supervisor
+\def\optionas#1{\def\@optionas{#1}} % Supervisor
 \ifismaster
   \optionpaperclass{硕士}
   \optionpaperclassen{Master}
-  \optionas{Advisor}
+  \optionas{Supervisor}
 \else
   \optionpaperclass{博士}
-  \optionpaperclassen{Doctor}
+  \optionpaperclassen{PhD}
   \optionas{Supervisor}
 \fi
 \newcommand{\checkparameter}
@@ -526,21 +527,26 @@
   \vspace{45bp} %从WORD中得来
   {\heiti \sihao
     \begin{tabular}{cp{8cm}c}
-      \raisebox{-3.7ex}[0pt]{\@optionpaperclass{}生姓名} &
+      \ifismaster
+      \raisebox{-3.7ex}[0pt]{\makebox[3cm][s]{硕\hfill{}士\hfill{}生\hfill{}姓\hfill{}名}} &
+      \else
+      \raisebox{-3.7ex}[0pt]{\makebox[3cm][s]{博\hfill{}士\hfill{}生\hfill{}姓\hfill{}名}} &
+      \fi
         {\fs \hfil\raisebox{-3.7ex}[0pt]{\@author}\hfil{}} & \\[3.2ex]
         \cline{2-2}
-      \raisebox{-3.7ex}[0pt]{学\ 科\ 专\ 业} &
+        \raisebox{-3.7ex}[0pt]{\makebox[3cm][s]{学\hfill{}科\hfill{}专\hfill{}业}} &
         {\fs \hfil\raisebox{-3.7ex}[0pt]{\@subject}\hfil{}} & \\[3.2ex]
         \cline{2-2}
-      \raisebox{-3.7ex}[0pt]{研\ 究\ 方\ 向} &
+        \raisebox{-3.7ex}[0pt]{\makebox[3cm][s]{研\hfill{}究\hfill{}方\hfill{}向}} &
         {\fs \hfil\raisebox{-3.7ex}[0pt]{\@researchfield}\hfil{}} & \\[3.2ex]
         \cline{2-2}
-      \raisebox{-3.7ex}[0pt]{指\ 导\ 教\ 师} &
+        \raisebox{-3.7ex}[0pt]{\makebox[3cm][s]{指\hfill{}导\hfill{}教\hfill{}师}} &
         {\fs \hfil\raisebox{-3.7ex}[0pt]{\@supervisor}\hfil{}} & \\[3.2ex]
         \cline{2-2}
       \ifx\@cosupervisor\@empty\else
-        & {\fs \hfil\raisebox{-3.7ex}[0pt]{\@cosupervisor}\hfil{}} & \\[3.2ex]
-        \cline{2-2}
+      \raisebox{-3.7ex}[0pt]{\makebox[3cm][s]{协\hfill{}助\hfill{}指\hfill{}导\hfill{}教\hfill{}师}} &
+          {\fs \hfil\raisebox{-3.7ex}[0pt]{\@cosupervisor}\hfil{}} & \\[3.2ex]
+          \cline{2-2}
       \fi
     \end{tabular}
   }
@@ -548,7 +554,7 @@
 
   \par
   \vfill
-  {\centering \cusong \sanhao \ifisanon{~}\else{国防科学技术大学研究生院}\fi\\[0.8em]
+  {\centering \cusong \sanhao \ifisanon{~}\else{国防科技大学研究生院}\fi\\[0.8em]
     {\@zhdate \par}%
   }
   \vspace{1mm}
@@ -565,7 +571,7 @@
     Candidate:\ & {\textsf{\@enauthor}}\\
     \@optionas{}:\ & {\textsf{\@ensupervisor}}\\
     \ifx\@encosupervisor\@empty\else
-      & {\textsf{\@encosupervisor}} \\
+      Associate \@optionas{}:\ & {\textsf{\@encosupervisor}} \\
     \fi
   \end{tabular}}
   \vfill\vfill\vfill\vfill
@@ -589,7 +595,7 @@ Defense Technology}\fi}\\
   {\fangsong\xiaosi %
 本人声明所呈交的学位论文是我本人在导师指导下进行的研究工
 作及取得的研究成果。尽我所知，除文中特别加以标注和致谢的地方外，论文中
-不包含其他人已经发表和撰写过的研究成果，也不包含为获得国防科学技术大学或
+不包含其他人已经发表和撰写过的研究成果，也不包含为获得国防科技大学或
 其他教育机构的学位或证书而使用过的材料。与我一同工作的同志对本研究所做的
 任何贡献均已在论文中作了明确的说明并表示谢意。\par
 学位论文题目：\vbox{\hbox to11cm{\hfil \the\displaytitle \hfil}
@@ -601,8 +607,8 @@ Defense Technology}\fi}\\
   \vspace*{2cm}
   {\cusong \erhao \centering 学位论文版权使用授权书\par\vspace{2cm}}
   {\fangsong\xiaosi %
-本人完全了解国防科学技术大学有关保留、使用学位论文的规定。
-本人授权国防科学技术大学可以保留并向国家有关部门或机构送交论文的复印件和电子
+本人完全了解国防科技大学有关保留、使用学位论文的规定。
+本人授权国防科技大学可以保留并向国家有关部门或机构送交论文的复印件和电子
 文档，允许论文被查阅和借阅; 可以将学位论文的全部或部分内容编入有关数据库
 进行检索，可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。\par
 （保密学位论文在解密后适用本授权书。）\par

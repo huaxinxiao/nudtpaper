@@ -12,13 +12,13 @@
 % LaTeX version 1999/12/01 or later.
 %
 % \fi
-% 
+%
 % \iffalse
 % <package>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 % <package>\ProvidesPackage{nudtpaper}
-% <package>[2015/05/12 v2.5 By Liu Benyuan <liubenyuan@gmail.com>]
+% <package>[2017/06/15 v2.7 By Liu Benyuan <liubenyuan@gmail.com>]
 %<*driver>
-\ProvidesFile{nudtpaper.dtx}[2015/05/12 v2.5 NUDT]
+\ProvidesFile{nudtpaper.dtx}[2017/06/15 v2.7 NUDT]
 \documentclass[11pt]{ltxdoc}
 \usepackage{nudtx}
 \EnableCrossrefs
@@ -29,11 +29,11 @@
 \end{document}
 %</driver>
 % \fi
-% 
+%
 % \def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
 % \def\nudtpaper{\textsc{Nudt}\-\textsc{Paper}}
-% 
-% \CheckSum{1217}
+%
+% \CheckSum{1245}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -53,7 +53,7 @@
 % \changes{v0.99}{2009/08/12}{Initial Release}
 %
 % \GetFileInfo{\jobname.dtx}
-% 
+%
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
 % \DoNotIndex{\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
 % \DoNotIndex{\let,\def,\xdef,\newcommand,\renewcommand}
@@ -84,7 +84,7 @@
 % \thispagestyle{empty}
 %
 % \begin{abstract}
-% 本模板旨在提供规范的国防科学技术大学\LaTeX{}写作模板环境，
+% 本模板旨在提供规范的国防科技大学\LaTeX{}写作模板环境，
 % 现支持硕士/博士学位论文格式，可以自动生成盲评、制作A3封面。
 % \end{abstract}
 %
@@ -94,7 +94,7 @@
 % \begin{enumerate}
 % \item 本模板的发布遵守 \LaTeX{} Project Public License，使用前请认真阅读协议内容
 % \item 本模板创立参照官方严格的论文写作手册，并同时参照硕士/博士学位论文\textbf{doc}文档对比修改
-% \item 国防科学技术大学对论文写作提供写作指南与官方\textbf{doc}模板，
+% \item 国防科技大学对论文写作提供写作指南与官方\textbf{doc}模板，
 % 同时提供官方的\LaTeX{}模板，本模板的出发点是方便大家使用专业的高效的论文书写工具，
 % 其有点在于注重排版质量、命令规范、使用方便、更新及时，符合论文撰写说明。
 % 但任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
@@ -341,7 +341,7 @@
 %<*thesis>
 \title{国防科大学位论文\LaTeX{}模板\\
 使用手册}
-\displaytitle{国防科学技术大学学位论文\LaTeX{}模板}
+\displaytitle{国防科技大学学位论文\LaTeX{}模板}
 \author{张三}
 \zhdate{\zhtoday}
 \entitle{How to Use the \LaTeX{} Document Class for NUDT Dissertations}
@@ -362,7 +362,7 @@
 \supervisor{李四\quad{}教授}
 \cosupervisor{王五\quad{}副教授} % 没有就空着
 \ensupervisor{Prof. LI Si}
-\encosupervisor{}
+\encosupervisor{} % 没有就空着
 \papertype{工学}
 \enpapertype{Engineering}
 %</thesis>
@@ -397,15 +397,15 @@
 %\changes{v2.2}{2011/05/27}{使用nomencl包管理符号列表}
 %\changes{v2.2}{2011/07/08}{默认使用nomencl管理参考文献}
 %\changes{v2.2}{2011/09/10}{回复原先使用的denotation方式添加符号列表}
-% 
+%
 % 如果使用nomencl制作符号列表，在文档开始前要加入\verb|\makenomenclature|命令
 % 默认还是使用denotation的方式。nomencl可以参考第二章相关章节，而denote方式
 % 请参考\verb|data/denotation.tex|文件（简单的列表环境）。
-% 
+%
 %<thesis>% 加入makenomenclature命令可用nomencl制作符号列表。
 %
 %    \begin{macrocode}
-%<*thesis> 
+%<*thesis>
 
 \begin{document}
 \graphicspath{{figures/}}
@@ -493,7 +493,7 @@
 %
 % \section{实现细节}
 % 我们首先介绍文档模板的基本信息以及宏包和配置，
-% 然后依照国防科学技术大学论文模板的书写规范一节一节的介绍实现步骤。
+% 然后依照国防科技大学论文模板的书写规范一节一节的介绍实现步骤。
 %
 % \changes{v1.2}{2009/09/28}{添加了A3封面制作}
 %
@@ -502,7 +502,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{nudtpaper}
 %<cfg>\ProvidesFile{nudtpaper.cfg}
-%<cls|cfg>[2011/07/17 v2.2 NUDT paper template]
+%<cls|cfg>[2017/06/15 v2.7 NUDT paper template]
 %    \end{macrocode}
 %
 % \subsection{宏包配置}
@@ -642,11 +642,12 @@
 % \changes{v1.8}{2010/10/15}{修改了默认的xeCJK的选项，为了兼容旧的xeCJK版本，normalindentfirst选项暂不使用，而是在后面添加indentfirst包}
 % \changes{v2.0}{2010/11/10}{传递no-math给xeCJK里面的fontspec宏包}
 % \changes{v2.2}{2011/07/03}{移除CJKtextspace, CJKmathspace, CJKnumber选项}
-% \changes{v2.4}{2015/02/09}{移除CJKnumber选项，添加新的CJKnum宏包。旧版本TexLive无需更改。}
+% \changes{v2.4}{2015/02/09}{移除CJKnumber选项，添加新的CJKnumb宏包。旧版本TexLive无需更改。}
+% \changes{v2.6}{2017/05/15}{移除CJKnumb宏包，统一使用zhnumber宏包。推荐使用2016以后的TexLive版本。}
 %
 %    \begin{macrocode}
 \RequirePackage[CJKchecksingle,no-math]{xeCJK}
-\RequirePackage{CJKnumb}
+\RequirePackage{zhnumber}
 \RequirePackage{indentfirst}
 %    \end{macrocode}
 %
@@ -661,6 +662,7 @@
 %    \begin{macrocode}
 \RequirePackage[numbers,sort&compress,square]{natbib}
 \RequirePackage[colorlinks=true,linkcolor=blue,citecolor=red,pdfborder=0 1 1]{hyperref}
+\RequirePackage{datetime}
 %\RequirePackage[pdfborder=0 0 1]{hyperref}
 %    \end{macrocode}
 %</cls>
@@ -705,7 +707,7 @@
     %%%% Using Office Family Fonts
     \setCJKmainfont[BoldFont={STZhongsong}]{SimSun}
     \setCJKsansfont{SimHei} % Hei
-    \setCJKmonofont{FangSong} % Fangsong 
+    \setCJKmonofont{FangSong} % Fangsong
     %%%% alias
     \setCJKfamilyfont{song}{SimSun}
     \setCJKfamilyfont{hei}{SimHei}
@@ -722,7 +724,7 @@
     %%%% Using Adobe Family Fonts
     \setCJKmainfont[BoldFont={STZhongsong}]{Adobe Song Std}
     \setCJKsansfont{Adobe Heiti Std} % Hei
-    \setCJKmonofont{Adobe Fangsong Std} % Fangsong 
+    \setCJKmonofont{Adobe Fangsong Std} % Fangsong
     %%%% alias
     \setCJKfamilyfont{song}{Adobe Song Std}
     \setCJKfamilyfont{hei}{Adobe Heiti Std}
@@ -911,6 +913,8 @@
 % 我们首先将他们一一中文化：
 % \changes{v0.992}{2009/08/19}{修改图表编号格式}
 % \changes{v1.3}{2009/10/14}{修改图目录和表目录}
+% \changes{v2.6}{2017/05/15}{更新zhnumber宏包兼容命令}
+% \changes{v2.6}{2017/05/15}{重定义zhnumber宏包中的zhtoday命令}
 %
 %    \begin{macrocode}
 %<*cls>
@@ -924,9 +928,9 @@
 \renewcommand\figurename{图}
 \renewcommand\tablename{表}
 \renewcommand\appendixname{附录}
-\def\CJK@today{\CJKdigits{\the\year} 年 \CJKnumber{\the\month} 月}
-\newcommand\zhtoday{\CJK@today}
-\newcommand\entoday{\today{}}
+\def\CJK@today{\zhdigits{\the\year}年\zhnumber{\the\month}月}
+\renewcommand\zhtoday{\CJK@today}
+\newcommand\entoday{\monthname{}, \the\year}
 %</cls>
 %    \end{macrocode}
 %
@@ -992,7 +996,7 @@
 %    \begin{macrocode}
 %<*cls>
 \renewpagestyle{plain}{
-\sethead{}{\raisebox{.65\baselineskip}{\songti \wuhao \ifisanon{~}\else{国防科学技术大学研究生院\@optionpaperclass{}学位论文}\fi}}{}%
+\sethead{}{\raisebox{.65\baselineskip}{\songti \wuhao \ifisanon{~}\else{国防科技大学研究生院\@optionpaperclass{}学位论文}\fi}}{}%
 \setfoot{}{{\songti \wuhao 第~\thepage~页}}{}%
 \headrule%
 \footrule%
@@ -1082,11 +1086,12 @@
 % 在\LaTeX{}中，Chapter在目录中默认是没有点的,我们加上,另外我们一并将
 % 目录中的section和subsection设定好,
 % \changes{v0.991}{2009/08/18}{modify TOC baselineskip and font lineskip to 1.25}
+% \changes{v2.6}{2017/05/15}{更新使用zhnumber生成中文章节编号}
 %
 %    \begin{macrocode}
 %<*cls>
 \titlecontents{chapter}[0pt]{\vspace{0.25\baselineskip} \heiti \xiaosi[1.25]}
-    {第\CJKnumber{\thecontentslabel}章\quad}{}
+    {第\zhnumber{\thecontentslabel}章\quad}{}
     {\hspace{.5em}\titlerule*{.}\contentspage}
 \titlecontents{section}[2em]{\songti \xiaosi[1.25]}
     {\thecontentslabel\quad}{}
@@ -1217,12 +1222,13 @@
 % \changes{v1.9}{2010/10/28}{使用了ttltips.pdf的设置chapter距顶端距离的办法}
 % \changes{v2.3}{2013/12/27}{修改了footnotesize，当一页中有两个footnote时，间距调整正常}
 % \changes{v2.3}{2013/12/27}{修改了titleformat和titlespacing的定制，更改英文字体，修正间距}
+% \changes{v2.6}{2017/05/15}{更新使用zhnumber}
 %
 %    \begin{macrocode}
 %<*cls>
 \setcounter{secnumdepth}{3}
 \setlength{\footnotesep}{2.2ex \@minus 2bp}
-\titleformat{\chapter}{\filcenter\sf \heiti\sanhao[1.25]}{第\CJKnumber{\thechapter}章\,}{1em}{}
+\titleformat{\chapter}{\filcenter\sf \heiti\sanhao[1.25]}{第\zhnumber{\thechapter}章\,}{1em}{}
 \titleformat{\section}{\filcenter\bfseries \cusong\sihao[1.25]}{\thesection}{1em}{}
 \titleformat{\subsection}{\sf \heiti\xiaosi[1.25]}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\bfseries \cusong\xiaosi[1.25]}{\thesubsubsection}{1em}{}
@@ -1393,12 +1399,13 @@
 % belowskip为外距离，也就是标题与正文之间的距离。
 % \changes{v1.3}{2009/09/29}{缩小图片标题与下文的距离}
 % \changes{v1.7}{2010/04/30}{增添LT array命令，可修改Longtable字体大小}
+% \changes{v2.7}{2017/06/15}{{删除图标标题前的多余空格}}
 %
 %    \begin{macrocode}
 %<*cls>
 \let\old@tabular\@tabular
 \def\thu@tabular{\wuhao[1.25]\old@tabular}
-\DeclareCaptionLabelFormat{thu}{{\wuhao[1.25]\song #1~\rmfamily #2}}
+\DeclareCaptionLabelFormat{thu}{{\wuhao[1.25]\song#1~\rmfamily #2}}
 \DeclareCaptionLabelSeparator{thu}{\hspace{1em}}
 \DeclareCaptionFont{thu}{\wuhao[1.25]}
 \captionsetup{labelformat=thu,labelsep=thu,font=thu}
@@ -1493,7 +1500,6 @@
 \theoremseparator{:\,}
 \newtheorem{proof}{证明}[chapter]
 \newtheorem{assumption}{假设}[chapter]
-\newtheorem{definition}{定义}[chapter]
 
 \renewtheoremstyle{plain}%
 {\item[\hspace*{2em} \theorem@headerfont ##1\ ##2\theorem@separator]}%
@@ -1502,6 +1508,7 @@
 \theorembodyfont{\kai\xiaosi[1.3]}
 \theoremheaderfont{\hei\xiaosi[1.3]}
 \theoremsymbol{}
+\newtheorem{definition}{定义}[chapter]
 \newtheorem{lemma}{引理}[chapter]
 \newtheorem{theorem}{定理}[chapter]
 \newtheorem{axiom}{公理}[chapter]
@@ -1546,7 +1553,7 @@
 \def\enpapertype#1{\def\@enpapertype{#1}} % Engineering, Science
 \def\optionpaperclass#1{\def\@optionpaperclass{#1}} % paperclass
 \def\optionpaperclassen#1{\def\@optionpaperclassen{#1}}
-\def\optionas#1{\def\@optionas{#1}} % Advisor OR Supervisor
+\def\optionas#1{\def\@optionas{#1}} % Supervisor
 %</cls>
 %    \end{macrocode}
 %
@@ -1557,10 +1564,10 @@
 \ifismaster
   \optionpaperclass{硕士}
   \optionpaperclassen{Master}
-  \optionas{Advisor}
+  \optionas{Supervisor}
 \else
   \optionpaperclass{博士}
-  \optionpaperclassen{Doctor}
+  \optionpaperclassen{PhD}
   \optionas{Supervisor}
 \fi
 %</cls>
@@ -1625,21 +1632,26 @@
   \vspace{45bp} %从WORD中得来
   {\heiti \sihao
     \begin{tabular}{cp{8cm}c}
-      \raisebox{-3.7ex}[0pt]{\@optionpaperclass{}生姓名} &
+      \ifismaster
+      \raisebox{-3.7ex}[0pt]{\makebox[3cm][s]{硕\hfill{}士\hfill{}生\hfill{}姓\hfill{}名}} &
+      \else
+      \raisebox{-3.7ex}[0pt]{\makebox[3cm][s]{博\hfill{}士\hfill{}生\hfill{}姓\hfill{}名}} &
+      \fi
         {\fs \hfil\raisebox{-3.7ex}[0pt]{\@author}\hfil{}} & \\[3.2ex]
         \cline{2-2}
-      \raisebox{-3.7ex}[0pt]{学\ 科\ 专\ 业} &
+        \raisebox{-3.7ex}[0pt]{\makebox[3cm][s]{学\hfill{}科\hfill{}专\hfill{}业}} &
         {\fs \hfil\raisebox{-3.7ex}[0pt]{\@subject}\hfil{}} & \\[3.2ex]
         \cline{2-2}
-      \raisebox{-3.7ex}[0pt]{研\ 究\ 方\ 向} &
+        \raisebox{-3.7ex}[0pt]{\makebox[3cm][s]{研\hfill{}究\hfill{}方\hfill{}向}} &
         {\fs \hfil\raisebox{-3.7ex}[0pt]{\@researchfield}\hfil{}} & \\[3.2ex]
         \cline{2-2}
-      \raisebox{-3.7ex}[0pt]{指\ 导\ 教\ 师} &
+        \raisebox{-3.7ex}[0pt]{\makebox[3cm][s]{指\hfill{}导\hfill{}教\hfill{}师}} &
         {\fs \hfil\raisebox{-3.7ex}[0pt]{\@supervisor}\hfil{}} & \\[3.2ex]
         \cline{2-2}
       \ifx\@cosupervisor\@empty\else
-        & {\fs \hfil\raisebox{-3.7ex}[0pt]{\@cosupervisor}\hfil{}} & \\[3.2ex]
-        \cline{2-2}
+      \raisebox{-3.7ex}[0pt]{\makebox[3cm][s]{协\hfill{}助\hfill{}指\hfill{}导\hfill{}教\hfill{}师}} &
+          {\fs \hfil\raisebox{-3.7ex}[0pt]{\@cosupervisor}\hfil{}} & \\[3.2ex]
+          \cline{2-2}
       \fi
     \end{tabular}
   }
@@ -1647,7 +1659,7 @@
 
   \par
   \vfill
-  {\centering \cusong \sanhao \ifisanon{~}\else{国防科学技术大学研究生院}\fi\\[0.8em]
+  {\centering \cusong \sanhao \ifisanon{~}\else{国防科技大学研究生院}\fi\\[0.8em]
     {\@zhdate \par}%
   }
   \vspace{1mm}
@@ -1671,7 +1683,7 @@
     Candidate:\ & {\textsf{\@enauthor}}\\
     \@optionas{}:\ & {\textsf{\@ensupervisor}}\\
     \ifx\@encosupervisor\@empty\else
-      & {\textsf{\@encosupervisor}} \\
+      Associate \@optionas{}:\ & {\textsf{\@encosupervisor}} \\
     \fi
   \end{tabular}}
   \vfill\vfill\vfill\vfill
@@ -1702,7 +1714,7 @@ Defense Technology}\fi}\\
   {\fangsong\xiaosi %
 本人声明所呈交的学位论文是我本人在导师指导下进行的研究工
 作及取得的研究成果。尽我所知，除文中特别加以标注和致谢的地方外，论文中
-不包含其他人已经发表和撰写过的研究成果，也不包含为获得国防科学技术大学或
+不包含其他人已经发表和撰写过的研究成果，也不包含为获得国防科技大学或
 其他教育机构的学位或证书而使用过的材料。与我一同工作的同志对本研究所做的
 任何贡献均已在论文中作了明确的说明并表示谢意。\par
 学位论文题目：\vbox{\hbox to11cm{\hfil \the\displaytitle \hfil}
@@ -1714,8 +1726,8 @@ Defense Technology}\fi}\\
   \vspace*{2cm}
   {\cusong \erhao \centering 学位论文版权使用授权书\par\vspace{2cm}}
   {\fangsong\xiaosi %
-本人完全了解国防科学技术大学有关保留、使用学位论文的规定。
-本人授权国防科学技术大学可以保留并向国家有关部门或机构送交论文的复印件和电子
+本人完全了解国防科技大学有关保留、使用学位论文的规定。
+本人授权国防科技大学可以保留并向国家有关部门或机构送交论文的复印件和电子
 文档，允许论文被查阅和借阅; 可以将学位论文的全部或部分内容编入有关数据库
 进行检索，可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。\par
 （保密学位论文在解密后适用本授权书。）\par
